@@ -4,12 +4,12 @@
 Saltar al final de los metadatos
 Creado por Joan Caparros, modificado por última vez hace 3 horas Ir al inicio de los metadatos
 Per tal de controlar els fitxers de missatges s'ha creat una eina que donat un diccionari
-Elimina els comentaris
-Extreu tots els seus valors
-Ordena totes les etiquetes pel seu key
-Trimeja el seu valor, excepte si afegim espais al final de la frase, ja que a vegades interessa
-Analitza tan si l'xml d'entrada està ben format com si el xml de sortida és correcte.
-Identa tot el codi per a una correcta visualització
+- Elimina els comentaris
+- Extreu tots els seus valors
+- Ordena totes les etiquetes pel seu key
+- Trimeja el seu valor, excepte si afegim espais al final de la frase, ja que a vegades interessa
+- Analitza tan si l'xml d'entrada està ben format com si el xml de sortida és correcte.
+- Identa tot el codi per a una correcta visualització
 
 order&check_messages.py
  
