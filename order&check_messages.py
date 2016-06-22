@@ -54,12 +54,12 @@ def ordenar_messages(ifile,ofile,language):
     data=[]
     root = tree.getroot()
     for country in root.findall('message'):
-        rank=element_to_string(country).strip('\t\n\r').lstrip().replace('\n', '').replace('\r', '').replace('  ','').replace('\t','')
+        rank=element_to_string(country).strip('\t\n\r').replace('\n', '').replace('\r', '').replace('  ','').replace('\t','')
         if (is_html(rank)):
             rank=html.unescape(rank)
         else:
             rank=escape(rank);    
-        rank=re.sub(r'(&(?!amp;))','&amp;', rank)
+        rank=re.sub(r'(&((?!amp;)(?!..;)))','&amp;', rank)
         name = country.get('key').strip()
         data.append((name, rank))
     orted_by_second = sorted(data, key=lambda tup: tup[0])
@@ -71,8 +71,9 @@ def ordenar_messages(ifile,ofile,language):
         b.set('key',i[0])
         b.text=i[1]
     xmlstr = minidom.parseString(ET.tostring(a)).toprettyxml(indent="   ")
+    xmlstr2=re.sub(r'/>\n','></message>\n',xmlstr )
     with open(ofile, "w") as f:
-        f.write(html.unescape(xmlstr.encode('utf-8')))
+        f.write(html.unescape(xmlstr2.encode('utf-8')))
     f.close()
 
 
