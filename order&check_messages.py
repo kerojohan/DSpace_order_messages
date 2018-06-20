@@ -58,7 +58,9 @@ def ordenar_messages(ifile,ofile,language):
         if (is_html(rank)):
             rank=html.unescape(rank)
         else:
-            rank=escape(rank);    
+            rank=escape(rank);  
+        rank=re.sub('&quot;','"', rank)    
+        rank=re.sub('&#x27;','\'', rank)
         rank=re.sub(r'(&((?!amp;)(?!..;)))','&amp;', rank)
         name = country.get('key').strip()
         data.append((name, rank))
