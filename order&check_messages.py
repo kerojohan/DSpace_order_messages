@@ -53,8 +53,8 @@ def ordenar_messages(ifile,ofile,language):
     tree = ET.parse(ifile)
     data=[]
     root = tree.getroot()
-    for country in root.findall('message'):
-        rank=element_to_string(country).strip('\t\n\r').replace('\n', '').replace('\r', '').replace('  ','').replace('\t','')
+    for message in root.findall('message'):
+        rank=element_to_string(message).strip('\t\n\r').replace('\n', '').replace('\r', '').replace('  ','').replace('\t','')
         if (is_html(rank)):
             rank=html.unescape(rank)
         else:
@@ -62,7 +62,7 @@ def ordenar_messages(ifile,ofile,language):
         rank=re.sub('&quot;','"', rank)    
         rank=re.sub('&#x27;','\'', rank)
         rank=re.sub(r'(&((?!amp;)(?!..;)))','&amp;', rank)
-        name = country.get('key').strip()
+        name = message.get('key').strip()
         data.append((name, rank))
     orted_by_second = sorted(data, key=lambda tup: tup[0])
     a = ET.Element('catalogue')
